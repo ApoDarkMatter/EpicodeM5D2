@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const MyBookCard = ({genre}) => {
   const url = "https://striveschool-api.herokuapp.com/api/comments/"
-  const token = "Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVhNGJlMTUxNWY0MTAwMTQ2OTdhMmYiLCJpYXQiOjE2OTQxOTgzMjYsImV4cCI6MTY5NTQwNzkyNn0.1iZJTfNwWY-3XTgNKSc4CJr-k_Z6m-g_8efsrv0kOAA"
+  const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVhNGJlMTUxNWY0MTAwMTQ2OTdhMmYiLCJpYXQiOjE2OTQxOTgzMjYsImV4cCI6MTY5NTQwNzkyNn0.1iZJTfNwWY-3XTgNKSc4CJr-k_Z6m-g_8efsrv0kOAA"
   
   const [selected,setSelected] = useState(false)
   const [comment,setComment] = useState([])
@@ -19,6 +19,7 @@ const MyBookCard = ({genre}) => {
             'Authorization': token
         }})
       setComment(response.data)
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +29,7 @@ const MyBookCard = ({genre}) => {
     getComments()
   },[])
 
-  const postComments = async () => {
+/*   const postComments = async () => {
     try {
       const response = await axios.post(url,token)
       getComments()
@@ -36,14 +37,14 @@ const MyBookCard = ({genre}) => {
       console.log(error);
     }
   }
-
-  const addBorder = () => {
+ */
+  const selFunction = () => {
     setSelected(!selected)
   }
 
   if(selected) {
     return (     
-      <Card onClick={addBorder} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
+      <Card onClick={selFunction} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
         <Card.Img variant="top" src={genre.img} />
         <Card.Body>
             <Card.Title>{genre.title}</Card.Title>
@@ -57,7 +58,7 @@ const MyBookCard = ({genre}) => {
     )
   } else {
     return (
-      <Card onClick={addBorder} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
+      <Card onClick={selFunction} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
         <Card.Img variant="top" src={genre.img} />
         <Card.Body>
             <Card.Title>{genre.title}</Card.Title>
