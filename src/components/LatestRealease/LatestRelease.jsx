@@ -5,17 +5,22 @@ import { nanoid } from 'nanoid'
 
 const LatestRelease = ({genre}) => {
   const [load,setLoad] = useState(false)
-  const [books,setBooks] = useState(genre)
   const [search,setSearch] = useState("")
+  const [result,setResult] = useState(genre)
   const [border,setBorder] = useState(false)
   
   const searchResult = () => {
     if(search === "") {
-      setBooks(genre)
+      setResult(genre)
     } else {
-      console.log(search);
-      setBooks(books.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
+      setResult(genre.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
     }
+  }
+
+  const addBorder = () => {
+    console.log(border);
+    setBorder(!border);
+    console.log(border);
   }
   return (
       <>
@@ -28,9 +33,9 @@ const LatestRelease = ({genre}) => {
         </Container>
         <Container>
           <Row>
-              {books.map(gen => (
+              {result.map(gen => (
                   <Col key={nanoid()} md={4} xs={12}>
-                      <MyBookCard genre={gen}/>
+                      <MyBookCard onClick={addBorder} className={border ? '2px solid red' : ''} genre={gen}/>
                   </Col>
               ))}
           </Row>
