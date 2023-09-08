@@ -10,7 +10,12 @@ const LatestRelease = ({genre}) => {
   const [border,setBorder] = useState(false)
   
   const searchResult = () => {
-
+    if(search === "") {
+      setBooks(genre)
+    } else {
+      console.log(search);
+      setBooks(books.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
+    }
   }
   return (
       <>
@@ -19,7 +24,7 @@ const LatestRelease = ({genre}) => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search book"
           ></input>
-          <Button type="button" onClick={searchResult()}>Search!</Button>
+          <Button type="button" onClick={searchResult}>Search!</Button>
         </Container>
         <Container>
           <Row>
