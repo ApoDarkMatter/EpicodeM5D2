@@ -7,18 +7,14 @@ import { footerLinks } from "./data/myFooterLinks"
 import LatestRelease from './components/LatestRealease/LatestRelease';
 import genre from './data/fantasy.json'
 
-export class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
       <>
         <MyNavBar links={navLinks} />
         <LatestRelease genre={genre} />
         <MyFooter links={footerLinks} />
-        
       </>
-
-    )
-  }
+  )
 }
 
 export default App

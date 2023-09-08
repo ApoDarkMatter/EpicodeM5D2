@@ -1,10 +1,9 @@
+import { nanoid } from 'nanoid'
 import React, { Component } from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 
-export class MyFooter extends Component {
-  render() {
-    const links = this.props.links
-    return (
+const MyFooter = ({links}) => {
+  return (
         <footer className="bg-light mt-5">
             <Container>
                 <Row className="justify-content-center py-4">
@@ -16,7 +15,7 @@ export class MyFooter extends Component {
                     <h5>Quick Links</h5>
                     <ul className="list-unstyled">
                         {links.map(link => (
-                            <a href={link.href}><li>{link.name}</li></a>
+                            <a key={nanoid()} href={link.href}><li>{link.name}</li></a>
                         ))}
                     </ul>
                     </Col>
@@ -33,8 +32,7 @@ export class MyFooter extends Component {
                 </Row>
             </Container>
         </footer>
-    )
-  }
+  )
 }
 
 export default MyFooter
