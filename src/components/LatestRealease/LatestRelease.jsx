@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import MyBookCard from '../MyBookCard/MyBookCard'
 import { nanoid } from 'nanoid'
-import { ClimbingBoxLoader } from "react-spinners";
+import {CircleLoader} from 'react-spinners';
 
 
 const LatestRelease = ({genre}) => {
@@ -21,7 +21,7 @@ const LatestRelease = ({genre}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
         setLoad(true)
-    },1000);
+    },2500);
 
     return () => clearTimeout(timer);
   },[]);
@@ -46,12 +46,12 @@ const LatestRelease = ({genre}) => {
           </Row>
         </Container>
       </>
-    )
-  } else {
-    <Container>
-      <ClimbingBoxLoader />
-    </Container>
-  }
+      )
+    } else {
+      <Container>
+        <CircleLoader color="#000000"/>
+      </Container>
+    }
   
 }
 
