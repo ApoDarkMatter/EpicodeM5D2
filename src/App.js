@@ -14,6 +14,7 @@ export class App extends Component {
         <MyNavBar links={navLinks} />
         <LatestRelease genre={genre} />
         <MyFooter links={footerLinks} />
+        
       </>
 
     )
