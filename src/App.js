@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from 'react'
+import MyNavBar from './components/MyNavBar/MyNavBar';
+import MyFooter from './components/MyFooter/MyFooter';
+import { navLinks } from "./data/myNavBarLinks"
+import { footerLinks } from "./data/myFooterLinks"
+import LatestRelease from './components/LatestRealease/LatestRelease';
+import genre from './data/fantasy.json'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <>
+        <MyNavBar links={navLinks} />
+        <LatestRelease genre={genre} />
+        <MyFooter links={footerLinks} />
+      </>
+
+    )
+  }
 }
 
-export default App;
+export default App
