@@ -8,23 +8,26 @@ import { CircleLoader } from 'react-spinners'
 const LatestRelease = ({genre}) => {
   const [load,setLoad] = useState(false)
   const [search,setSearch] = useState("")
-  const [result,setResult] = useState(genre)
+  const [result,setResult] = useState([])
+
   
-  const searchResult = () => {
-    if(search === "") {
-      setResult(genre)
-    } else {
-      setResult(genre.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
-    }
+  const searchBook = () => {
+    const allBooks = [...genre]
+    setResult(allBooks.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
   }
 
   useEffect(() => {
+    const allBooks = [...genre]
+    if(search === "") {
+      setResult(allBooks)
+    }
+    
     const timer = setTimeout(() => {
         setLoad(true)
-    },2500);
+    },1000);
 
     return () => clearTimeout(timer);
-  },[]);
+  },[search,genre]);
 
   if(load) {
     return (
@@ -34,7 +37,7 @@ const LatestRelease = ({genre}) => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search book"
           ></input>
-          <Button type="button" onClick={searchResult}>Search!</Button>
+          <Button type="button" onClick={searchBook}>Search!</Button>
         </Container>
         <Container>
           <Row>
