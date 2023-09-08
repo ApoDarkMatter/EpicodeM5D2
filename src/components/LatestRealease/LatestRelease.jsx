@@ -7,7 +7,6 @@ const LatestRelease = ({genre}) => {
   const [load,setLoad] = useState(false)
   const [search,setSearch] = useState("")
   const [result,setResult] = useState(genre)
-  const [border,setBorder] = useState(false)
   
   const searchResult = () => {
     if(search === "") {
@@ -17,11 +16,6 @@ const LatestRelease = ({genre}) => {
     }
   }
 
-  const addBorder = () => {
-    console.log(border);
-    setBorder(!border);
-    console.log(border);
-  }
   return (
       <>
         <Container>
@@ -35,7 +29,7 @@ const LatestRelease = ({genre}) => {
           <Row>
               {result.map(gen => (
                   <Col key={nanoid()} md={4} xs={12}>
-                      <MyBookCard onClick={addBorder} className={border ? '2px solid red' : ''} genre={gen}/>
+                      <MyBookCard genre={gen}/>
                   </Col>
               ))}
           </Row>
