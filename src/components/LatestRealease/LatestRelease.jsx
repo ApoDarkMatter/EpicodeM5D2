@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import MyBookCard from '../MyBookCard/MyBookCard'
 import { nanoid } from 'nanoid'
+import { ClimbingBoxLoader } from "react-spinners";
+
 
 const LatestRelease = ({genre}) => {
   const [load,setLoad] = useState(false)
@@ -16,7 +18,16 @@ const LatestRelease = ({genre}) => {
     }
   }
 
-  return (
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setLoad(true)
+    },1000);
+
+    return () => clearTimeout(timer);
+  },[]);
+
+  if(load) {
+    return (
       <>
         <Container>
           <input type="text"
@@ -35,7 +46,13 @@ const LatestRelease = ({genre}) => {
           </Row>
         </Container>
       </>
-  )
+    )
+  } else {
+    <Container>
+      <ClimbingBoxLoader />
+    </Container>
+  }
+  
 }
 
 export default LatestRelease
