@@ -1,7 +1,9 @@
+import { nanoid } from 'nanoid';
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+
 
 const MyNavBar = ({links}) => {
   return (
@@ -12,11 +14,11 @@ const MyNavBar = ({links}) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         {links.map(link => (
-                            <Nav.Link href={link.href}>{link.name}</Nav.Link>
+                            <Nav.Link key={nanoid()} href={link.href}>{link.name}</Nav.Link>
                         ))}
                     </Nav>
                 </Navbar.Collapse>
-            </Container>
+            </Container>    
         </Navbar>
   )
 }
