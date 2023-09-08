@@ -1,13 +1,33 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import MyNavBar from './components/MyNavBar/MyNavBar';
 import MyFooter from './components/MyFooter/MyFooter';
 import { navLinks } from "./data/myNavBarLinks"
 import { footerLinks } from "./data/myFooterLinks"
 import LatestRelease from './components/LatestRealease/LatestRelease';
-import genre from './data/fantasy.json'
+import axios from 'axios';
 
 const App = () => {
+  const [genre,setGenre] = useState([])
+  const url = "https://epibooks.onrender.com/"
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(url)
+      setGenre(response.data)
+      } catch (err) {
+      console.log(err); 
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  },[])
+
+
+
+
+
   return (
       <>
         <MyNavBar links={navLinks} />
