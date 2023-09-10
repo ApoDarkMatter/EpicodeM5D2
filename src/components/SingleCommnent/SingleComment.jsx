@@ -23,7 +23,7 @@ const SingleComment = ({comment,asin,func}) => {
         }
     }
   return (
-    <li>{comment.comment} - {comment.rate} - <Button variant="danger" type="button" onClick={deleteComment}><AiFillDelete/></Button></li>
+    <p>{comment.comment} - {comment.rate} - <Button variant="danger" type="button" onClick={deleteComment}><AiFillDelete/></Button></p>
   )
 }
 

@@ -28,7 +28,7 @@ const App = () => {
   return (
       <>
         <MyNavBar links={navLinks} />
-        <LatestRelease genre={book.slice(0,20)} />
+        <LatestRelease genre={book.slice(0,30)} />
         <MyFooter links={footerLinks} />
       </>
   )
