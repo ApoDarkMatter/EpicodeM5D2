@@ -26,7 +26,7 @@ const MyBookCard = ({genre}) => {
 
   if(selected) {
     return (     
-      <Card onClick={selFunction} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
+      <Card className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
         <Card.Img variant="top" src={genre.img} />
         <Card.Body>
             <Card.Title>{genre.title}</Card.Title>
@@ -35,7 +35,7 @@ const MyBookCard = ({genre}) => {
             </Card.Text>
             <Button variant="primary">Go somewhere</Button>
         </Card.Body>
-          <CommentArea asin={genre.asin}/>
+        <CommentArea asin={genre.asin}/>
       </Card>
     )
   } else {
