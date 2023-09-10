@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { Container, Button } from 'react-bootstrap'
 
 
-const AddComment = ({asin,getFunc}) => {
+const AddComment = ({asin,func}) => {
     const url = "https://striveschool-api.herokuapp.com/api/comments"
     const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVhNGJlMTUxNWY0MTAwMTQ2OTdhMmYiLCJpYXQiOjE2OTQxOTgzMjYsImV4cCI6MTY5NTQwNzkyNn0.1iZJTfNwWY-3XTgNKSc4CJr-k_Z6m-g_8efsrv0kOAA"
 
@@ -28,7 +28,7 @@ const AddComment = ({asin,getFunc}) => {
                         }
                     })
                     if (response.status === 200) {
-                        getFunc();
+                        func();
                         setNewComment("");
                         setNewRate("");
                         alert("Commento inviato con successo!");

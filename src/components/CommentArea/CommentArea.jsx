@@ -38,15 +38,15 @@ const CommentArea = ({asin}) => {
     if(availableComment) {
       return (
         <>
-          <CommentList comments={comment}/>
-          <AddComment asin={asin}/>
+          <CommentList comments={comment} asin={asin} func={getComments}/>
+          <AddComment asin={asin} func={getComments}/>
         </>
       )
     } else {
       return (
         <>
           <p>Nessun Commnento</p>
-          <AddComment asin={asin} getFunc={getComments}/>
+          <AddComment asin={asin} func={getComments}/>
         </>
       )
     }
