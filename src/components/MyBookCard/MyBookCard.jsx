@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card,Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import './MyBookCard.css'
 import CommentArea from '../CommentArea/CommentArea'
 
@@ -12,18 +12,6 @@ const MyBookCard = ({genre}) => {
     setSelected(!selected)
   }
 
-
-/*   const postComments = async () => {
-    try {
-      const response = await axios.post(url,token)
-      getComments()
-    } catch (error) {
-      console.log(error);
-    }
-  }
- */
-
-
   if(selected) {
     return (     
       <Card className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
@@ -33,7 +21,6 @@ const MyBookCard = ({genre}) => {
             <Card.Text>
                 {genre.category}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
         </Card.Body>
         <CommentArea asin={genre.asin}/>
       </Card>
@@ -47,7 +34,6 @@ const MyBookCard = ({genre}) => {
             <Card.Text>
                 {genre.category}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
     )
