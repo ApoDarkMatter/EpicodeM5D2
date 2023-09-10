@@ -14,8 +14,8 @@ const MyBookCard = ({genre}) => {
 
   if(selected) {
     return (     
-      <Card className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={genre.img} />
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={genre.img} onClick={selFunction} className={selected ? 'addBorder' : ''}/>
         <Card.Body>
             <Card.Title>{genre.title}</Card.Title>
             <Card.Text>
@@ -27,8 +27,8 @@ const MyBookCard = ({genre}) => {
     )
   } else {
     return (
-      <Card onClick={selFunction} className={selected ? 'addBorder' : ''} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={genre.img} />
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={genre.img} onClick={selFunction} className={selected ? 'addBorder' : ''}/>
         <Card.Body>
             <Card.Title>{genre.title}</Card.Title>
             <Card.Text>
